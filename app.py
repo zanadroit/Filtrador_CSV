@@ -13,7 +13,7 @@ TAMANHO_MAX_BYTES = TAMANHO_MAX_MB * 1024 * 1024
 # Função para ler o CSV com as colunas selecionadas
 def ler_csv_em_partes(file, usecols):
     chunks = []
-    for chunk in pd.read_csv(file, sep=';', usecols=usecols, chunksize=100000):
+    for chunk in pd.read_csv(file, encoding="utf-8", sep=';', usecols=usecols, chunksize=100000):
         chunks.append(chunk)
     return pd.concat(chunks, ignore_index=True)
 
